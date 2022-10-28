@@ -1,0 +1,20 @@
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}
+.main-dv{
+  position: relative;
+}
+.form-div{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.647);
+  padding: 25px 0px;
+  margin: auto;
+  border-radius: 10px;
+  z-index: 999;
+}
+.row{
+  justify-content: center;
+}
