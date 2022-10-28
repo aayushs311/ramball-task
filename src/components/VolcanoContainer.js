@@ -49,7 +49,7 @@ function VolcanoContainer({ volcanoData, fetchVolcanosData }) {
     obj[name] = value;
     setInputData(obj);
 
-    if (e.target.value === '') {
+    if (obj.lat1 === '' && obj.lat2 === '' && obj.lon1 === '' && obj.lon2 === '') {
       setJsonData(volcanoData.volcanos);
     }
   }
@@ -81,7 +81,7 @@ function VolcanoContainer({ volcanoData, fetchVolcanosData }) {
                 <Button className='mt-4' color='primary' type='submit' disabled={(inputData.lon1 && inputData.lon2) === ""}><FontAwesomeIcon icon={faSearch} /></Button>
               </Col>
               <Col md="1">
-                <Button className='mt-4' color='danger' type='button' onClick={clearData} disabled={(inputData.lon1 && inputData.lon2) === ""}>Clear</Button>
+                <Button className='mt-4' color='danger' type='button' onClick={clearData} disabled={((inputData.lon1 && inputData.lon2) || (inputData.lat1 && inputData.lat2)) === ""}>Clear</Button>
               </Col>
             </Row>
           </Form>
@@ -101,13 +101,13 @@ function VolcanoContainer({ volcanoData, fetchVolcanosData }) {
                 <Button className='mt-4' color='primary' type='submit' disabled={(inputData.lat1 && inputData.lat2) === ""}><FontAwesomeIcon icon={faSearch} /></Button>
               </Col>
               <Col md="1">
-                <Button className='mt-4' color='danger' type='button' onClick={clearData} disabled={(inputData.lat1 && inputData.lat2) === ""}>Clear</Button>
+                <Button className='mt-4 invisible' color='danger' type='button' onClick={clearData} disabled={(inputData.lat1 && inputData.lat2) === ""}>Clear</Button>
               </Col>
             </Row>
           </Form>
         </InputGroup>
       </div>
-      < MapContainer center={[51.505, -0.09]} zoom={5} scrollWheelZoom={true} >
+      < MapContainer center={[-3.25, 36.75]} zoom={5} scrollWheelZoom={true} >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
